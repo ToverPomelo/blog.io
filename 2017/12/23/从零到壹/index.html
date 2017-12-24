@@ -13,7 +13,7 @@
     <script type="text/javascript">
         // Data Center
         var DC = {
-            reward:	false,
+            reward:	true,
             lv: JSON.parse('{"enable":true,"app_id":"g0N7A2LU2KGoJmxsrU9CDJI3-gzGzoHsz","app_key":"SXE2Pst2NnjSmI1KrvlB49Bz","icon":true}'),
             v: JSON.parse('{"enable":true,"appid":"g0N7A2LU2KGoJmxsrU9CDJI3-gzGzoHsz","appkey":"SXE2Pst2NnjSmI1KrvlB49Bz","notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}')
         };
@@ -238,7 +238,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-12-24T09:34:27.170Z" itemprop="dateUpdated">2017-12-24 17:34:27</time>
+    最后更新时间：<time datetime="2017-12-24T11:11:57.841Z" itemprop="dateUpdated">2017-12-24 19:11:57</time>
 </span><br>
 
 
@@ -254,6 +254,12 @@
     </footer>
 </blockquote>
 
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
         
         <div class="post-footer">
             
@@ -326,6 +332,33 @@
     
 </article>
 
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        想吃雪糕了。。。
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.png" data-alipay="/img/reward-alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+    
 </div>
 
         <footer class="footer">
