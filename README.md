@@ -1,2 +1,2 @@
 # 我的blog
-[blog.tover.xyz](http://blog.tover.xyz)
+[blog.l-tover.xyz](http://blog.l-tover.xyz)
