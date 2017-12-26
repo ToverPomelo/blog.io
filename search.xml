@@ -3,6 +3,47 @@
   
     
     <entry>
+      <title><![CDATA[克拉默法则的浅谈]]></title>
+      <url>/2017/12/25/%E5%85%8B%E6%8B%89%E9%BB%98%E6%B3%95%E5%88%99%E7%9A%84%E6%B5%85%E8%B0%88/</url>
+      <content type="html"><![CDATA[<p>看懂这个可能需要一点线性代数基本知识。<br><a id="more"></a></p>
+<h1 id="Cramer’s-Rule能吃吗？"><a href="#Cramer’s-Rule能吃吗？" class="headerlink" title="Cramer’s Rule能吃吗？"></a>Cramer’s Rule能吃吗？</h1><p>&emsp;&emsp;通常来说，我们解一个线性方程组的时候，都会用<a href="https://zh.wikipedia.org/wiki/%E9%AB%98%E6%96%AF%E6%B6%88%E5%8E%BB%E6%B3%95" target="_blank" rel="noopener">高斯消元法</a>,因为消元法简单、效率高。但是有没有不借助消元的解法？Cramer’s Rule就是一个例子。</p>
+<h1 id="Key-idea"><a href="#Key-idea" class="headerlink" title="Key idea"></a>Key idea</h1><p>&emsp;&emsp;我们拿3✕3矩阵来做个栗子：<br><br>&emsp;&emsp;对于Ax = b    &ensp;(<br>$\begin{bmatrix}a<em>{11} &amp; a</em>{12} &amp; a<em>{13} \a</em>{21} &amp; a<em>{22} &amp; a</em>{23} \a<em>{31} &amp; a</em>{32} &amp; a_{33} \end{bmatrix}$</p>
+<p>$\begin{bmatrix} x_1 \ x_2 \ x_3 \end{bmatrix}$ = $\begin{bmatrix} b_1 \ b_2 \ b_3 \end{bmatrix}$)我们可以拆开为：<br><br><br>$ \begin{bmatrix} A \end{bmatrix} $<br>$ \begin{bmatrix}x_1&amp;0&amp;0\x_2&amp;1&amp;0\x_3&amp;0&amp;1\end{bmatrix} $ = $ \begin{bmatrix}b<em>1&amp;a</em>{12}&amp;a_{13}\b<em>2&amp;a</em>{22}&amp;a_{23}\b<em>3&amp;a</em>{32}&amp;a_{33}\end{bmatrix} $ = $B_1$&emsp;&emsp;➀  <br><br><br>$ \begin{bmatrix} A \end{bmatrix} $<br>$ \begin{bmatrix}1&amp;x_1&amp;0\0&amp;x_2&amp;0\0&amp;x<em>3&amp;1\end{bmatrix} $ = $ \begin{bmatrix}a</em>{11}&amp;b<em>1&amp;a</em>{13}\a_{21}&amp;b<em>2&amp;a</em>{23}\a_{31}&amp;b<em>3&amp;a</em>{33}\end{bmatrix} $ = $B_2$&emsp;&emsp;➁  <br><br><br>$ \begin{bmatrix} A \end{bmatrix} $<br>$ \begin{bmatrix}1&amp;0&amp;x_1\0&amp;1&amp;x_2\0&amp;0&amp;x<em>3\end{bmatrix} $ = $ \begin{bmatrix}a</em>{11}&amp;a_{12}&amp;b<em>1\a</em>{21}&amp;a_{22}&amp;b<em>2\a</em>{31}&amp;a_{32}&amp;b_3\end{bmatrix} $ = $B_3$&emsp;&emsp;➂  <br><br></p>
+<h3 id="怎么拆成这样的"><a href="#怎么拆成这样的" class="headerlink" title="怎么拆成这样的"></a>怎么拆成这样的</h3><p>&emsp;&emsp;以➀为例，那个$ \begin{bmatrix} A \end{bmatrix} $隔壁的$ \begin{bmatrix}x_1&amp;0&amp;0\x_2&amp;1&amp;0\x_3&amp;0&amp;1\end{bmatrix} $矩阵其实就是把单位矩阵I（$ \begin{bmatrix}1&amp;0&amp;0\0&amp;1&amp;0\0&amp;0&amp;1\end{bmatrix} $）中第1列（$\begin{bmatrix} 1\0\0 \end{bmatrix}$）换成x（$\begin{bmatrix} x_1\x_2\x<em>3 \end{bmatrix}$）。A 与这个矩阵作用后便产生一个新矩阵，不难发现这个矩阵是 A 的第一列（$\begin{bmatrix} a</em>{11}\a<em>{21}\a</em>{31} \end{bmatrix}$）替换为 b（$\begin{bmatrix} b_1\b_2\b_3 \end{bmatrix}$）,我们把这个新矩阵记作 $B_1$。<br>&emsp;&emsp;➁和➂的做法与➀类似，只不过➁是替换第二列，➂是替换第三列。</p>
+<h3 id="为什么要这样拆"><a href="#为什么要这样拆" class="headerlink" title="为什么要这样拆"></a>为什么要这样拆</h3><p>&emsp;&emsp;我们来看看它们的行列式(<a href="https://zh.wikipedia.org/wiki/%E8%A1%8C%E5%88%97%E5%BC%8F" target="_blank" rel="noopener">Determinant</a>)吧。<br><br>&emsp;&emsp;首先介绍一下行列式乘法:<br></p>
+<p><center> $detAB = detA ✕ detB$ </center><br><br>&emsp;&emsp;如何求行列式这里就不多说了，接下来分析一下上面式子的行列式：（这么多 0 用<a href="https://zh.wikipedia.org/wiki/%E5%AD%90%E5%BC%8F%E5%92%8C%E4%BD%99%E5%AD%90%E5%BC%8F" target="_blank" rel="noopener">余子式</a>算就好啦）<br><br></p>
+<p><center> det$\begin{bmatrix}x_1&amp;0&amp;0\x_2&amp;1&amp;0\x_3&amp;0&amp;1\end{bmatrix}$ = $x_1$ </center></p>
+<p><center> det$\begin{bmatrix}1&amp;x_1&amp;0\0&amp;x_2&amp;0\0&amp;x_3&amp;1\end{bmatrix}$ = $x_2$ </center></p>
+<p><center> det$\begin{bmatrix}1&amp;0&amp;x_1\0&amp;1&amp;x_2\0&amp;0&amp;x_3\end{bmatrix}$ = $x_3$ </center><br>&emsp;&emsp;两边求行列式便可以得到：</p>
+<p><center> ($detA$)($x_1$) = det$B_1$ </center></p>
+<p><center> ($detA$)($x_2$) = det$B_2$ </center></p>
+<p><center> ($detA$)($x_3$) = det$B_3$ </center><br>&emsp;&emsp;两边除以$detA$就可以求出向量 x 中的每一个数：</p>
+<p><center> $x_1$ = det$B_1$/$detA$ </center></p>
+<p><center> $x_2$ = det$B_2$/$detA$ </center></p>
+<p><center> $x_3$ = det$B_3$/$detA$ </center><br>&emsp;&emsp;也就是说 x = $\begin{bmatrix} detB_1/detA \detB_2/detA\detB_3/detA\end{bmatrix}$。<br><br><br>&emsp;&emsp;当然，可以这样子操作的前提是$detA$ ≠ 0,分母不能为0。<br>&emsp;&emsp;</p>
+<blockquote>
+<p>当 detA = 0 时我还没想到怎么解释，如果 detA = 0 的话，那全部的 detB 都为0?网上对这方面说的也不多（有的说这个是前提？）所以就先略过了。</p>
+</blockquote>
+<h3 id="如何解一个矩阵？"><a href="#如何解一个矩阵？" class="headerlink" title="如何解一个矩阵？"></a>如何解一个矩阵？</h3><p>&emsp;&emsp;注意，上面解出来的 x 只是一个向量，那如何解一个矩阵？比如 $AB = C$ 。<br><br>&emsp;&emsp;这时我们可以把矩阵 B 拆开：(注意这里$b_n$和$c_n$为向量)</p>
+<p><center> A$\begin{bmatrix} b_1&amp;b_2&amp;…&amp;b_n \end{bmatrix}$ = $\begin{bmatrix} c_1&amp;c_2&amp;…&amp;c_n \end{bmatrix}$  </center><br>&emsp;&emsp;于是：</p>
+<p><center> A $b_i$ = $c_i$ (i = 1,2,…,n) </center><br>&emsp;&emsp;这样就把一个矩阵拆成若干个向量，剩下的就与上面类似。</p>
+<h3 id="一个应用：求逆"><a href="#一个应用：求逆" class="headerlink" title="一个应用：求逆"></a>一个应用：求逆</h3><p>&emsp;&emsp;我们可以用克拉默法则求逆，其实就是求 $AA^{-1} = I$ ,于是这样这样那样那样，就得到：</p>
+<p><center> $A^{-1} = \frac{C^T}{detA}$ &emsp;（C 是 A 的<a href="https://zh.wikipedia.org/wiki/%E9%A4%98%E5%9B%A0%E5%AD%90%E7%9F%A9%E9%99%A3" target="_blank" rel="noopener">代数余子式矩阵</a>）<br></center></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>&emsp;&emsp;虽然克拉默法则看起来很酷，但是其效率并不高（比消元慢多了），起码求行列式的一个较快的方法就是消元。</p>
+<hr>
+<p>&emsp;&emsp;本文作者很水的，上面说的有错也不奇怪。有什么问题欢迎在评论区留言。</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Linear Algebra </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hello World!]]></title>
       <url>/2017/12/24/Hello-World/</url>
       <content type="html"><![CDATA[<p>按照惯例，通常都是从”Hello World!”开始的，所以，<a id="more"></a>上代码：</p>
