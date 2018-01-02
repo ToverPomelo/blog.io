@@ -1212,7 +1212,7 @@ section.evaluateSec .answer{
 			this.scrollToBottom();
 			
 			//连接websocket后端服务器
-			this.socket = io.connect('ws://10.242.64.183:3000');
+			this.socket = io.connect('http://blog.l-tover.xyz/kaoshi/');
 			
 			//告诉服务器端有用户登录
 			this.socket.emit('login', {userid:this.userid, username:this.username});
