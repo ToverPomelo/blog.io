@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     
     
-    <title>Tags: 数学 | 编程〲雜事</title>
+    <title>写了个矩阵类[0] | 编程〲雜事</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="undefined">
+    <meta name="keywords" content="线性代数,c++">
     <link rel="shortcut icon" href="/img/favicon.png">
     <link rel="stylesheet" href="/css/style.css?v=1.2.4">
     <script type="text/javascript">
         // Data Center
         var DC = {
-            reward:	false,
+            reward:	true,
             lv: JSON.parse('{"enable":true,"app_id":"g0N7A2LU2KGoJmxsrU9CDJI3-gzGzoHsz","app_key":"SXE2Pst2NnjSmI1KrvlB49Bz","icon":true}'),
             v: JSON.parse('{"enable":true,"appid":"g0N7A2LU2KGoJmxsrU9CDJI3-gzGzoHsz","appkey":"SXE2Pst2NnjSmI1KrvlB49Bz","notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}')
         };
@@ -29,7 +29,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu"  >
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -118,7 +118,7 @@
               </a>
             </li>
         
-            <li class=" active">
+            <li class="">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 TAGS
@@ -151,7 +151,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Tags: 数学</span>
+            <span>写了个矩阵类[0]</span>
             
         </div>
         
@@ -161,40 +161,22 @@
         
     </div>
 </header>
-<header class="content-header tags-header">
+<header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Tags: 数学</h1>
+        <h1 class="title">写了个矩阵类[0]</h1>
         <h5 class="subtitle">
+            
+                <time datetime="2018-01-08T08:48:30.000Z" itemprop="datePublished" class="page-time">
+  2018-01-08
+</time>
+
+
             
         </h5>
         
     </div>
     
-<div class="tabs-bar container">
-    <nav class="tags-list">
-        <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-            ">All</a>
-        
-            <a href="/tags/c/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">c</a>
-            
-        
-            <a href="/tags/线性代数/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">线性代数</a>
-            
-        
-            <a href="/tags/c/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">c++</a>
-            
-        
-            <a href="/tags/数学/" backup-style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">数学</a>
-            
-        
-    </nav>
-    <!-- PC show more-->
-    <div class="tags-list-more">
-        <a href="javascript:;" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
-    </div>
-</div>
-
 
 </header>
 
@@ -211,45 +193,175 @@
     <div id="local-search-result"></div>
 </div>
 
-<div class="container body-wrap fade">
-    
-            <div class="waterfall">
-                
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-12-25 22:05:00" datetime="2017-12-25T14:05:00.000Z"  itemprop="datePublished">2017-12-25</time>
 
+<div class="container body-wrap">
+    <article id="post-写了个矩阵类-0"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">写了个矩阵类[0]</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-08 16:48:30" datetime="2018-01-08T08:48:30.000Z"  itemprop="datePublished">2018-01-08</time>
+
+            
+
+
+            
+	<span id="/2018/01/08/写了个矩阵类-0/" class="leancloud_visitors" data-flag-title="写了个矩阵类[0]" title="写了个矩阵类[0]">
+		
+			<i class="icon icon-eye"></i>
+		
+		<span class="leancloud-visitors-count"></span>
+	</span>
+ 
+
+            
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2018/01/08/写了个矩阵类-0/#comment">
+            <span class="valine-comment-count" data-xid="/2018/01/08/写了个矩阵类-0/"></span>
+        </a>
+    </span>
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="写了个矩阵类"><a class="markdownIt-Anchor" href="#写了个矩阵类"></a> 写了个矩阵类</h1>
+<p>  本来是为了考试复习写的，后来发现“诶！写的挺好喔（自卖自夸）”，就打算在这里把它写下来。<br></p>
+<a id="more"></a>
+<p>  临近期末时间不多，这里就先把代码贴出来吧：<a href="https://github.com/ToverPomelo/Class_Matrix" target="_blank" rel="noopener">☞戳我☜</a></p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-01-08T09:04:43.720Z" itemprop="dateUpdated">2018-01-08 17:04:43</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2018/01/08/写了个矩阵类-0/" target="_blank" rel="external">http://blog.tover.xyz/2018/01/08/写了个矩阵类-0/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.png" alt="Tover">
+            Tover
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线性代数/">线性代数</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
       
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/01/08/写了个矩阵类-0/&title=《写了个矩阵类[0]》 — 编程〲雜事&source= 写了个矩阵类
+  本来是为了考试复习写的，后来发现“诶！写的挺好喔（自卖自夸）”，就打算在这里把它写下来。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/08/写了个矩阵类-0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
 
 
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+    <div id="comment"></div>
+
+
+        
     </div>
     
-
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
 
   
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2017/12/25/克拉默法则的浅谈/">克拉默法则的浅谈</a>
+    <div class="next">
+      <a href="/2017/12/25/克拉默法则的浅谈/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">克拉默法则的浅谈</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#写了个矩阵类"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 写了个矩阵类</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        想吃雪糕了。。。
+        <i class="icon icon-quote-right"></i>
     </h3>
-  
-
-
-
-    
-    <div class="post-footer">
+    <div class="reward-content">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数学/">数学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线性代数/">线性代数</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.png" alt="打赏二维码">
+        </div>
         
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.png" data-alipay="/img/reward-alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
             </div>
+        </label>
         
-    
+    </div>
 </div>
 
+    
+</div>
 
         <footer class="footer">
     
@@ -303,13 +415,14 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/tags/数学/&title=编程〲雜事&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/01/08/写了个矩阵类-0/&title=《写了个矩阵类[0]》 — 编程〲雜事&source= 写了个矩阵类
+  本来是为了考试复习写的，后来发现“诶！写的挺好喔（自卖自夸）”，就打算在这里把它写下来。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/tags/数学/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/08/写了个矩阵类-0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -321,7 +434,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByklEQVR42u3awU4EIRAE0P3/nx4TTxojVsHAjsnjtFldeFw6UM3rFY/rc7zKcX0Zd82Ji4t7hnsNx8+p7/rr+Ptft4qLi3uQOy40Y0RCGRe4otjh4uI+jNtOnZQqXFzc/84d/2ey/NvqLi4u7hQ3KTT51WjuwHTzXQ0XF3eB2wamOz5vzHdxcXFL7lWOfIa7Vvw2Jy4u7hFuEmckkehcmNIGsri4uCe5KxHnjgcWxeUHFxd3A3f9aHLv84s/Sh4uLu4DuG1wuVLaxoUyWgAXF/cmbtvGSIpdfhGae8KFi4u7m5uUj7modG6rRTcYFxd3G3fHgWYlCtkT9eDi4i5mlcWTqbmnFcmZq+4C4eLibuDmRaRtqLRHJVxc3Cdwk5B0LmvJPychKS4u7kluO3WyZHtNyn+Li4t7hjv3kGJHiyXaEi4u7kFuW57m4tE8iv2jkOHi4h7h5mMuWk2KVLQNXFzcI9yVJmh7GGrj1KXGLS4u7jK3DUnbJxptG6Z4TYaLi7uZmy/Wxigrl5+iJ4yLi/smbl6w8gbMxkKGi4v7YG7yyCPZBi4u7nlu0ewsW7DrQclkLIKLi7vAba8fyUUoOazMXaJwcXE3cz8AVGu+VXKyMRwAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aS47CQAxFUfa/6TBFghT3uUK3Yt8atUIEPhm4/cnjgc/xcl6v1O5//3R9/bIjQ4aM2zKO5dn5gbNvWF8nn36IRIYMGQMYJIiz+/mdPHQemwwZMmSQ0GtBk7QuQ4YMGTsJl6dL3r7+w/8NGTJk3IrBg7sqRD6ku7gXlyFDxg0ZtcHZ3/z9k/2GDBkybsU4wvOLdUKaZD/8lgwZMlozeIIjP5amy6BBBfHIkCFjDiMNN02UteUoAsuQIaM1Y13wpcuD2rhtHyxDhoxpDHIlXUPuvJwRl48yZMhox0jFR+mQlpgXi18qXBkyZDRi1NrXNIunQZPHF9SnMmTIuDmj9lIFKfhqS81aESlDhow5jKsWAOs0ygMl8ciQIWMOI20mSWO5k45TmAwZMnozeIok7ej+MrKWjmXIkDGBkaZLPunaXwagdCxDhowBDBJWWuTFe9TwntMVpgwZMtoxeL6qDe7TB8FjkCFDxjTG/siMpFf+2kSalGXIkDGBQQJah8ILuBob3S9DhowBDF7Y8bF+mpR5q/xlkSlDhozWDFK0xVVn+D0X9OIyZMhoxDjCk7a+aeHIm+TT2laGDBntGGmaS4OujeQuDl2GDBktGDygdNxfe8mMLx5kyJAxjbE/0CcJd/3g0iZWhgwZMvgyIF1A8hVpMKSTIUOGDNBq1hra2osdwSZWhgwZjRhpEATDh261hYEMGTLmMLbe1CgFWku+fGAnQ4aMRown/ly8KrPPjbYAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
