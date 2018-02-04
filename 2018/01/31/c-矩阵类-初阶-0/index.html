@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     
     
-    <title>Archives | 编程〲雜事</title>
+    <title>c++矩阵类-初阶[0] | 编程〲雜事</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="undefined">
+    <meta name="keywords" content="c++,线性代数">
     <link rel="shortcut icon" href="/img/favicon.png">
     <link rel="stylesheet" href="/css/style.css?v=1.2.4">
     <script type="text/javascript">
         // Data Center
         var DC = {
-            reward:	false,
+            reward:	true,
             lv: JSON.parse('{"enable":true,"app_id":"g0N7A2LU2KGoJmxsrU9CDJI3-gzGzoHsz","app_key":"SXE2Pst2NnjSmI1KrvlB49Bz","icon":true}'),
             v: JSON.parse('{"enable":true,"appid":"g0N7A2LU2KGoJmxsrU9CDJI3-gzGzoHsz","appkey":"SXE2Pst2NnjSmI1KrvlB49Bz","notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}')
         };
@@ -29,7 +29,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu"  >
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -125,7 +125,7 @@
               </a>
             </li>
         
-            <li class=" active">
+            <li class="">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 ARCHIVES
@@ -151,7 +151,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Archives</span>
+            <span>c++矩阵类-初阶[0]</span>
             
         </div>
         
@@ -161,18 +161,19 @@
         
     </div>
 </header>
-<header class="content-header archives-header">
+<header class="content-header post-header">
     <img src="/img/banner.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Archives</h1>
+        <h1 class="title">c++矩阵类-初阶[0]</h1>
         <h5 class="subtitle">
             
+                <time datetime="2018-01-31T08:30:33.000Z" itemprop="datePublished" class="page-time">
+  2018-01-31
+</time>
+
+
+            
         </h5>
-        
-        <div class="remind">
-            <p>总计文章( <span>5</span> )篇，约( <span>8.5K</span> )字</p>
-            <p>Keep moving😎!!!</p>
-        </div>
         
     </div>
     
@@ -192,161 +193,169 @@
     <div id="local-search-result"></div>
 </div>
 
-<div class="container body-wrap fade">
-    
-                <h3 class="archive-separator">January, 2018</h3>
-                <div class="waterfall">
+
+<div class="container body-wrap">
+    <article id="post-c-矩阵类-初阶-0"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">c++矩阵类-初阶[0]</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-31 16:30:33" datetime="2018-01-31T08:30:33.000Z"  itemprop="datePublished">2018-01-31</time>
+
             
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2018-01-31 16:30:33" datetime="2018-01-31T08:30:33.000Z"  itemprop="datePublished">2018-01-31</time>
-
-      
 
 
-    </div>
-    
+            
+	<span id="/2018/01/31/c-矩阵类-初阶-0/" class="leancloud_visitors" data-flag-title="c++矩阵类-初阶[0]" title="c++矩阵类-初阶[0]">
+		
+			<i class="icon icon-eye"></i>
+		
+		<span class="leancloud-visitors-count"></span>
+	</span>
+ 
+
+            
+    <span class="leancloud-comment">
+        <i class="icon icon-comment-o"></i>
+        <a href="/2018/01/31/c-矩阵类-初阶-0/#comment">
+            <span class="valine-comment-count" data-xid="/2018/01/31/c-矩阵类-初阶-0/"></span>
+        </a>
+    </span>
 
 
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2018/01/31/c-矩阵类-初阶-0/">c++矩阵类-初阶[0]</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="构造函数怎么写好"><a class="markdownIt-Anchor" href="#构造函数怎么写好"></a> 构造函数怎么写好?</h1>
+<a id="more"></a>
+        </div>
         
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-01-31T08:34:21.491Z" itemprop="dateUpdated">2018-01-31 16:34:21</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2018/01/31/c-矩阵类-初阶-0/" target="_blank" rel="external">http://blog.tover.xyz/2018/01/31/c-矩阵类-初阶-0/</a>
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.png" alt="Tover">
+            Tover
+        </a>
+    </footer>
+</blockquote>
+
+        
+            <div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+            
+        
+        <div class="post-footer">
+            
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线性代数/">线性代数</a></li></ul>
 
-    </div>
+            <div class="page-share-wrap">
     
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2018-01-08 16:48:30" datetime="2018-01-08T08:48:30.000Z"  itemprop="datePublished">2018-01-08</time>
 
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
       
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/01/31/c-矩阵类-初阶-0/&title=《c++矩阵类-初阶[0]》 — 编程〲雜事&source= 构造函数怎么写好?" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/31/c-矩阵类-初阶-0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
 
 
-    </div>
-    
 
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2018/01/08/写了个矩阵类-0/">写了个矩阵类</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线性代数/">线性代数</a></li></ul>
-
-    </div>
-    
-  </article>
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
 </div>
+
+        </div>
         
-                    </div> 
-                
-                <h3 class="archive-separator">December, 2017</h3>
-                <div class="waterfall">
             
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-12-25 22:05:00" datetime="2017-12-25T14:05:00.000Z"  itemprop="datePublished">2017-12-25</time>
-
-      
+    <div id="comment"></div>
 
 
+        
     </div>
     
-
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
 
   
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2017/12/25/克拉默法则的浅谈/">克拉默法则的浅谈</a>
+    <div class="next">
+      <a href="/2018/01/08/写了个矩阵类-0/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">写了个矩阵类</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#构造函数怎么写好"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 构造函数怎么写好?</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+    <div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        想吃雪糕了。。。
+        <i class="icon icon-quote-right"></i>
     </h3>
-  
-
-
-
-    
-    <div class="post-footer">
+    <div class="reward-content">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数学/">数学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线性代数/">线性代数</a></li></ul>
-
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/reward-wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/reward-wechat.png" data-alipay="/img/reward-alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
     </div>
-    
-  </article>
 </div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-12-24 19:40:00" datetime="2017-12-24T11:40:00.000Z"  itemprop="datePublished">2017-12-24</time>
 
-      
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2017/12/24/Hello-World/">Hello World!</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
-
-    </div>
-    
-  </article>
-</div>
-        
-        <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2017-12-23 22:33:22" datetime="2017-12-23T14:33:22.000Z"  itemprop="datePublished">2017-12-23</time>
-
-      
-
-
-    </div>
-    
-
-
-  
-    <h3 class="post-title " itemprop="name">
-      <a class="post-title-link" href="/2017/12/23/从零到壹/">从零到壹</a>
-    </h3>
-  
-
-
-
-    
-  </article>
-</div>
-        
-    </div>
     
 </div>
 
@@ -402,13 +411,13 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/archives/&title=编程〲雜事&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/01/31/c-矩阵类-初阶-0/&title=《c++矩阵类-初阶[0]》 — 编程〲雜事&source= 构造函数怎么写好?" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/archives/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/31/c-矩阵类-初阶-0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -420,7 +429,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABuElEQVR42u3aQXKDMAwFUO5/6fQAGZMvCbssHqtOA/KDhUa2dF3x9Sle38+uYl47Llxc3DE3WXhFySOs7qxGwMXFPcm9TzQ5dPVs8p8o2eHi4r6ee5+GVvdUPwcuLu77udXS5/4lcXFx38xNNj/3KazK2r5Xw8XFHXDzU8p9f28538XFxW1xew2SPOVVD0Z/rI6Li3uEmyeU6pFHXsTk6+Li4p7nzlPMaLsSfxpcXNyT3N7gVO+VJjNXuLi4Z7hJmVJNYUmC60XDxcU9w81DJ+MUvY1QvgouLu5ubg/Ra8H2hjZ+1GK4uLgbuNUUMzn4mHyIKO/i4uI+xM2LjMmgRrXmWj6Fi4t7kNsbwEqONfMIER0XF/cIt9camaAno6K4uLgnuc3eSzHB9cY1lns1XFzcI9xJwyOPU23rRk1WXFzcbdwEVE1hvUKnUIXh4uJu4H6KV2/hx9ozuLi4R7i9FulToasDHLi4uCe5veSV3JkUPeVfcXFxD3KriaY3ujEZ5sDFxX0z99ltTHn8AhcX98Xc3a8UdX5wcXE3c3ujEr0RrqQAwsXF/V/u/HDzqYZrb3gLFxf3Ue4fuO+Qn+8NT6oAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aS27DMAwFwNz/0inQVYE2yiPpFLA0WhmtPxotGInk4xGP5/dI7vl55+/r9XuSe0YDAwPjtozncqw/kDz7aiGq312/HwMD4wTGOsiug2kSdquLks8NAwMDY32dTCu/EwMDA+MTjOq0eu/HwMDAyA+T8yn2toYXn8UxMDBuyKgWBv7z+oP1DQwMjJswnsUx+Xw+ufKsMDAwtmZMUl3r5Nrk2WpLBwYGBkbCSyad45vlAQwMjIMZkyRaXkJIluBNaMbAwNiaMQ92eeNXHo6rx2kMDIxdGXmBMJl0cuDsLcqb5cbAwDiA0dtlVQsJSVDuYTAwME5jJA8n1+s3T8L3H3/BwMDYmjE/TObhdb5ZfLPcGBgYWzMmjVzlrF4rbTdqNcPAwLg5o5fcr4bXXjPZ+s0YGBinMaLo20qQTX4HCltPDAyMrRnVAmTysV6iLX/25UJgYGBsyrj2HJxv8nrtHW862jAwMDZlJGn3edlgnsKLCgYYGBibMnrJsnxyvXRetZCJgYFxDqPX4FVtKZv89+X9GBgYWzPybdlVR828CFHdMmJgYOzKeBZHQk1KnvlTzR0uBgbGRoxqsCuk6Qebv3zqGBgY5zCqQfZa2FWpPQwMjBMY8yB71fZxdJTFwMA4njEvN/aWY/3DgIGBgZEkzqobx0njBQYGxsmMXjEgf0Oehuv9BQMDY29GNTU26uZoNXlc9RUMDIwbMr4A5u6Ems6Oka8AAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

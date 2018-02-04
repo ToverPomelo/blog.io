@@ -3,6 +3,23 @@
   
     
     <entry>
+      <title><![CDATA[c++矩阵类-初阶[0]]]></title>
+      <url>/2018/01/31/c-%E7%9F%A9%E9%98%B5%E7%B1%BB-%E5%88%9D%E9%98%B6-0/</url>
+      <content type="html"><![CDATA[<h1 id="构造函数怎么写好"><a class="markdownIt-Anchor" href="#构造函数怎么写好"></a> 构造函数怎么写好?</h1>
+<a id="more"></a>]]></content>
+      
+        
+        <tags>
+            
+            <tag> c++ </tag>
+            
+            <tag> 线性代数 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[写了个矩阵类]]></title>
       <url>/2018/01/08/%E5%86%99%E4%BA%86%E4%B8%AA%E7%9F%A9%E9%98%B5%E7%B1%BB-0/</url>
       <content type="html"><![CDATA[<h1 id="写了个矩阵类"><a class="markdownIt-Anchor" href="#写了个矩阵类"></a> 写了个矩阵类</h1>
@@ -14,9 +31,9 @@
         
         <tags>
             
-            <tag> 线性代数 </tag>
-            
             <tag> c++ </tag>
+            
+            <tag> 线性代数 </tag>
             
         </tags>
         
