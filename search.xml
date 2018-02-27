@@ -46,6 +46,256 @@
     </entry>
     
     <entry>
+      <title><![CDATA[利用废旧安卓机打造伪家用Linux服务器]]></title>
+      <url>/2018/02/04/%E5%88%A9%E7%94%A8%E5%BA%9F%E6%97%A7%E5%AE%89%E5%8D%93%E6%9C%BA%E6%89%93%E9%80%A0%E4%BC%AA%E5%AE%B6%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+      <content type="html"><![CDATA[<p>  “知道有Termux后，我的红米1S复活了！”</p>
+<a id="more"></a>
+<h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+<p>  Termux是一个安卓的终端模拟器，它与很多其他的终端模拟器的不同在于它多了很多命令，而我觉得最特别的是它居然内置了包管理工具apt和pkg，据说Termux自己维护了一个源，提供各种专门为termux定制的包。<br><br>
+  还有一点，Termux是免root的，所以在“apt install …”时也不用加“sudo”<br><br>
+  总而言之，Termux非常强大，于是我就打算利用它把我的旧红米1S打造成一个家用服务器。（好，这里广告打完了，顺便推荐一篇<a href="http://tonybai.com/2017/11/09/hello-termux/" target="_blank" rel="noopener">写Termux写得挺好的博文</a>）</p>
+<h1 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h1>
+<h2 id="1安卓手机一台"><a class="markdownIt-Anchor" href="#1安卓手机一台"></a> ①安卓手机一台</h2>
+<p>  据我所知Termux是只有安卓版本的，跟用苹果的朋友无缘了，在<a href="https://termux.com/" target="_blank" rel="noopener">官网</a>中也说明了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Termux is an Android terminal emulator and Linux environment app that works directly with no rooting or setup required.</span><br></pre></td></tr></table></figure>
+<p>  对于安卓的手机也是有条件限制的——安卓的版本必须是5.0以上，不然会安装不了。这个在<a href="https://wiki.termux.com/wiki/FAQ" target="_blank" rel="noopener">官方的Wiki</a>中也有说明：</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Termux is only available on Android 5.0 or later. See https://github.com/termux/termux-app/issues/6 for more information.</span><br></pre></td></tr></table></figure>
+<p>  如果手里的安卓机版本太低，可以考虑刷一下机（当然如果你舍得刷的话。。），像我的红米1S万年安卓4.4，为了装Termux最后还是刷了个<a href="https://zh.wikipedia.org/wiki/CyanogenMod#CyanogenMod_13" target="_blank" rel="noopener">CM13</a>(安卓6.0)。</p>
+<h2 id="2termux软件一个"><a class="markdownIt-Anchor" href="#2termux软件一个"></a> ②Termux软件一个</h2>
+<p>  这个在<a href="https://termux.com/" target="_blank" rel="noopener">官网</a>下载安装就可以了，懂得&quot;climb over the wall&quot;的可以直接在Google Play下载，在F-Droid也可以，另外国内的应用商店里好像也有。</p>
+<h2 id="3root可选"><a class="markdownIt-Anchor" href="#3root可选"></a> ③Root(可选)</h2>
+<p>  只是使用Termux的话是不用root的，但是想要用得更爽的话，有root会方便很多。如果不想root的可以跳过。<br><br>
+  Root的方法网上有很多，MIUI的话可以刷开发版，CyanogenMod的话好象是自带的，实在不行下个刷机精灵之类的软件线刷就好。</p>
+<h2 id="4busybox可选须root"><a class="markdownIt-Anchor" href="#4busybox可选须root"></a> ④Busybox(可选)(须Root)</h2>
+<p>  据说有了<a href="https://zh.wikipedia.org/wiki/BusyBox" target="_blank" rel="noopener">Busybox</a>会使命令更全，虽然我觉得Termux的命令也是挺全的，但装了也没有坏处。这个可选，但安装的话需要root权限。</p>
+<figure class="image-box">
+                <img src="deemo2.jpg" alt="busybox的介绍和它的命令" title="" class="">
+                <p>busybox的介绍和它的命令</p>
+            </figure>
+<h2 id="5一个适合打代码的键盘"><a class="markdownIt-Anchor" href="#5一个适合打代码的键盘"></a> ⑤一个适合打代码的键盘</h2>
+<p>  想象一下你在用Vim的时候没有Esc键的感觉。。<br><br>
+  这里我推荐CodeBoard(<a href="https://play.google.com/store/apps/details?id=com.gazlaws.codeboard" target="_blank" rel="noopener">Google Play</a> , <a href="http://www.wandoujia.com/apps/com.gazlaws.codeboard" target="_blank" rel="noopener">豌豆荚</a>)，如果舍得的话买一个蓝牙键盘也是不错的选择。</p>
+<h1 id="探索更多玩法"><a class="markdownIt-Anchor" href="#探索更多玩法"></a> 探索：更多玩法</h1>
+<p>  到这里，服务器就搭好了（你没看错！），但是一个空的服务器没什么用，接下来就要在里面安装各种应用。</p>
+<h2 id="1访问手机储存"><a class="markdownIt-Anchor" href="#1访问手机储存"></a> ①访问手机储存</h2>
+<p>  Termux里的文件是放在应用的内部存储里的，看一下它的home目录，比如输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$HOME</span></span><br></pre></td></tr></table></figure>
+<p>  会得到：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/data/data/com.termux/files/home</span><br></pre></td></tr></table></figure>
+<p>  这样的话要访问手机里的文件就有点困难，下面介绍三种方法访问手机的文件：<br><br></p>
+<h5 id="1按照官方的方法的话是先在手机的应用权限里授予手机储存访问权限然后输入"><a class="markdownIt-Anchor" href="#1按照官方的方法的话是先在手机的应用权限里授予手机储存访问权限然后输入"></a> ⑴按照<a href="https://wiki.termux.com/wiki/FAQ" target="_blank" rel="noopener">官方</a>的方法的话，是先在手机的应用权限里授予手机储存访问权限，然后输入：</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">termux-setup-storage</span><br></pre></td></tr></table></figure>
+<p>  这样在home目录里面就会多了个storage目录，里面的文件就是手机储存里面的相应文件:</p>
+<figure class="image-box">
+                <img src="deemo1.jpg" alt="在storage目录下还有这几个目录" title="" class="">
+                <p>在storage目录下还有这几个目录</p>
+            </figure>
+<p>  参考一下官方的说法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">To grant storage permissions in Android goto Settings&gt;Apps&gt;Termux&gt;Permissions and select storage, then run termux-setup-storage in Termux.</span><br></pre></td></tr></table></figure>
+<h5 id="2直接访问"><a class="markdownIt-Anchor" href="#2直接访问"></a> ⑵直接访问：</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /storage/emulated/0</span><br><span class="line">   ls</span><br></pre></td></tr></table></figure>
+<p>  因为这个文件夹是可读写的，所以可以直接访问，如果是外置的储存卡的话要知道外置储存卡的路径才能用这种方法。<br></p>
+<h5 id="3创建符号链接跟方法二类似"><a class="markdownIt-Anchor" href="#3创建符号链接跟方法二类似"></a> ⑶创建符号链接，跟方法二类似：</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /storage/emulated/0 ~/storage(←这个名字和路径是自己取的)</span><br></pre></td></tr></table></figure>
+<h2 id="2openssh"><a class="markdownIt-Anchor" href="#2openssh"></a> ②OpenSSH</h2>
+<p>  首先要远程链接的话要用到<a href="https://zh.wikipedia.org/wiki/Secure_Shell" target="_blank" rel="noopener">ssh(Secure Shell)</a>,刚安装好的Termux是不能用ssh的，输入“ssh”的话会提示：</p>
+<figure class="image-box">
+                <img src="deemo002.jpg" alt="" title="" class="">
+                <p></p>
+            </figure>
+<p>  根据提示敲&quot;pkg install openssh&quot;或者&quot;apt install openssh&quot;安装OpenSSH。<br><br>
+  如果要链接远程设备的话可以输入（前提是对方开了ssh服务）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#链接：</span></span><br><span class="line">	ssh 用户名@IP地址 -p 端口号</span><br><span class="line"><span class="comment">#下载：</span></span><br><span class="line">	scp -P 端口号 用户名@IP地址 本地路径</span><br><span class="line"><span class="comment">#上传：</span></span><br><span class="line">	scp -P 端口号 本地路径 用户名@IP地址</span><br></pre></td></tr></table></figure>
+<p>  端口号默认是22,是默认的话可以不输入（记得-p也不要打）。看不懂我写的可以参考一下<a href="https://www.jianshu.com/p/b70089f4c187" target="_blank" rel="noopener">这里</a>。<br><br>
+  如果要开启服务器（我说的是那个安卓手机）的ssh服务的话可以使用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshd -p 端口号</span><br></pre></td></tr></table></figure>
+<p>  不加端口号（&quot;-p&quot;也是）的话是默认端口号8022（如果是Linux的话默认是22，据说安卓为了保护端口开1024以下的端口）。<br><br>
+  其他设备要连接服务器时要知道服务器的IP，可以用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+<p>  然后找到最像IP地址的那个（通常连接路由器的话是192.168.*.*），另外，如果没有公网IP的话（家用的估计也是没有的了。。）两个设备要连接同一个内网（Wifi）。<br></p>
+<figure class="image-box">
+                <img src="deemo4.jpg" alt="" title="" class="">
+                <p></p>
+            </figure>
+<p>  上面的搞定之后还是不能直接连上的，因为Termux不支持使用密码登陆，所以只能使用免密码登陆，<a href="https://termux.com/ssh.html" target="_blank" rel="noopener">官方</a>原话：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The Termux sshd binary does not support password logins, so a key needs to be authorized in ~/.ssh/authorized_keys before connecting. Use ssh-keygen to generate a new one if desired.</span><br></pre></td></tr></table></figure>
+<p>  首先要在自己的设备（不是指那个安卓手机）上生成私钥（已经有的可以跳过，就是在 ~/.ssh 里有 id_rsa.pub 这个文件）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>  在生成的时候可能会让你输一个密码（好像是“Enter passphrase (empty for no passphrase)”）不需要的可以直接回车，如果输入了的话要记住，以后每次登陆都会用到。<br><br>
+  然后找到 ~/.ssh 里的 id_rsa.pub 这个文件想方设法把里面的内容复制到服务器（安卓手机）的 ~/.ssh 目录下的 authorized_keys 文件里面。方法有很多，可以直接复制粘贴，也可以两个文件放在同一目录后执行(重定向输出)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
+<p>  如无意外的话到这里就配置成功了，ssh免密码登陆看不懂的话可以参考<a href="https://www.jianshu.com/p/e9db116fef8c" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="3vim"><a class="markdownIt-Anchor" href="#3vim"></a> ③Vim</h2>
+<p>  <a href="http://www.vim.org/" target="_blank" rel="noopener">Vim</a>是Linux上一个功能强大的文本编辑器（有多强大？用一下就知道咯。），用以下命令安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install vim</span><br></pre></td></tr></table></figure>
+<p>  顺便推荐一个<a href="https://github.com/ma6174/vim-deprecated" target="_blank" rel="noopener">可以一键安装的vim插件</a>（这个比较旧了，都没有维护了），里面的自动安装在安卓机上是不适用的，但是可以在电脑上装好后再覆盖home目录下的 .vim 文件夹和 .vimrc 文件，这两个文件是隐藏的，可以通以下命令查看：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -a</span><br></pre></td></tr></table></figure>
+<p>  Vim的教程<a href="http://www.runoob.com/linux/linux-vim.html" target="_blank" rel="noopener">网上</a>很多，嫌网上找麻烦的可以在vim里输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:help</span><br></pre></td></tr></table></figure>
+<figure class="image-box">
+                <img src="deemo5.jpg" alt="help文档，不过是英文的" title="" class="">
+                <p>help文档，不过是英文的</p>
+            </figure>
+<p>  查看官方的教程（没改过的话是英文的），如果实在嫌vim用起来麻烦的话可以用nano：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install nano</span><br></pre></td></tr></table></figure>
+<h2 id="4gcc"><a class="markdownIt-Anchor" href="#4gcc"></a> ④GCC</h2>
+<p>  如果是还在用C或C++的话应该对它非常熟悉，简单地说，<a href="https://zh.wikipedia.org/wiki/GCC" target="_blank" rel="noopener">GCC</a>就是个编译器，在Termux中，输入gcc的话它会提示你安装Clang，简单地说，<a href="https://zh.wikipedia.org/wiki/Clang" target="_blank" rel="noopener">Clang</a>也是一个编译器。</p>
+<figure class="image-box">
+                <img src="deemo001.jpg" alt="" title="" class="">
+                <p></p>
+            </figure>
+<p>  执行以下命令安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install clang</span><br></pre></td></tr></table></figure>
+<p>  安装Clang后同样可以使用gcc或者是g++命令编译C或者C++文件。</p>
+<h2 id="5make"><a class="markdownIt-Anchor" href="#5make"></a> ⑤make</h2>
+<p>  有了<a href="https://zh.wikipedia.org/wiki/Make" target="_blank" rel="noopener">make</a>，就可以<a href="https://www.linuxidc.com/Linux/2015-04/115812.htm" target="_blank" rel="noopener">从源码安装Linux软件</a>了，同样用pkg安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install make</span><br></pre></td></tr></table></figure>
+<h2 id="6git"><a class="markdownIt-Anchor" href="#6git"></a> ⑥git</h2>
+<p>  <a href="https://git-scm.com/" target="_blank" rel="noopener">git</a>这个东西我只是用过在<a href="https://github.com/" target="_blank" rel="noopener">Github</a>上下载和上传文件，所以我会的也不多- -。安装git:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install git</span><br></pre></td></tr></table></figure>
+<p>  用来下载的话是命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 地址 本地路径(省略的话就是当前路径)</span><br></pre></td></tr></table></figure>
+<p>  创建仓库的话可以参考<a href="https://lellansin.wordpress.com/2013/02/21/git-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-%E4%B8%80/" target="_blank" rel="noopener">这个</a>。</p>
+<h2 id="7scheme"><a class="markdownIt-Anchor" href="#7scheme"></a> ⑦Scheme</h2>
+<p>  如果有看<a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9E%84%E9%80%A0%E5%92%8C%E8%A7%A3%E9%87%8A" target="_blank" rel="noopener">SICP</a>的话，肯定会忍不住装一个Scheme（像我- -），在Termux里装的是 tinyscheme ，同样用pkg：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install tinyscheme</span><br></pre></td></tr></table></figure>
+<p>  运行的话是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#直接运行：</span></span><br><span class="line">	tinyscheme</span><br><span class="line"><span class="comment">#运行文件：</span></span><br><span class="line">	tinyscheme 文件</span><br></pre></td></tr></table></figure>
+<p>  有一个不太方便的就是tinyscheme不支持方向键，如果打了一大串发现前面少了个括号的话。。。解决方法我是参考<a href="http://deathking.github.io/2015/08/07/armored-your-mit-scheme/" target="_blank" rel="noopener">这篇文章</a>。首先安装rlwrap：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install rlwrap</span><br></pre></td></tr></table></figure>
+<p>  然后按照那篇文章的，生成 .scheme_completion.txt 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">   touch .scheme_completion.txt</span><br></pre></td></tr></table></figure>
+<p>  把那个<a href="https://gist.github.com/bobbyno/3325982" target="_blank" rel="noopener">gist</a>里面的东西复制进去（或者直接 git clone 那个文件也行）。<br><br>
+  运行时用以下命令(注意这里是tinyscheme，因为我们没有scheme这个命令)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rlwrap -r -c -f <span class="string">"<span class="variable">$HOME</span>"</span>/.scheme_completion.txt tinyscheme</span><br></pre></td></tr></table></figure>
+<p>  这样的话就可以用方向键了（还有那篇文章里的SLIB我还没装成功，你们谁装好的教我一下啊~），但是每次运行都输入这么一大串命令的话也是挺麻烦的，为了方便，我先把他写成一个脚本。另外，为了可以输入 scheme 就可以运行，我把它放进bin目录里。<br>
+  首先Termux的bin目录是在home目录上层的usr目录里面：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/../usr/bin</span><br></pre></td></tr></table></figure>
+<p>  然后创建一个叫 scheme 的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch scheme</span><br></pre></td></tr></table></figure>
+<p>  给予<a href="https://zhidao.baidu.com/question/9603503" target="_blank" rel="noopener">777权限</a>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 ./scheme</span><br></pre></td></tr></table></figure>
+<p>  然后把脚本复制进去：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> rlwrap -n -r -c -f  <span class="string">"<span class="variable">$HOME</span>"</span>/.scheme_completion.txt tinyscheme <span class="variable">$@</span></span><br><span class="line">&gt; ./scheme</span><br></pre></td></tr></table></figure>
+<p>  或者用vim打开把这个复制进去也行(注意是tinyscheme！不然就是一个递归的死循环了！)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rlwrap -n -r -c -f  <span class="string">"<span class="variable">$HOME</span>"</span>/.scheme_completion.txt tinyscheme <span class="variable">$@</span></span><br></pre></td></tr></table></figure>
+<p>  然后就可以直接用 scheme 命令运行了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#直接运行：</span></span><br><span class="line">	scheme</span><br><span class="line"><span class="comment">#运行文件：</span></span><br><span class="line">	scheme 文件</span><br></pre></td></tr></table></figure>
+<figure class="image-box">
+                <img src="deemo6.jpg" alt="" title="" class="">
+                <p></p>
+            </figure>
+<h2 id="8nodejs"><a class="markdownIt-Anchor" href="#8nodejs"></a> ⑧Node.js</h2>
+<p>  如果想用服务器（那个安卓手机）来运行网站的话，可以用<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">Node.js</a>（当然可以用其他，只是我只会这个- -），安装的话可以：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install nodejs</span><br></pre></td></tr></table></figure>
+<p>  查看是否安装成功的话可以：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<figure class="image-box">
+                <img src="deemo7.jpg" alt="" title="" class="">
+                <p></p>
+            </figure>
+<p>  另外<a href="https://zh.wikipedia.org/zh-hans/Npm" target="_blank" rel="noopener">npm</a>应该也是一起安装的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<figure class="image-box">
+                <img src="deemo8.jpg" alt="" title="" class="">
+                <p></p>
+            </figure>
+<p>  运行的话是用命令 node ，但有些时候好像是要用命令 nodejs 的（忘了是什么时候了），所以保险一点把这个命令复制一份：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ~/../usr/bin/node ~/../usr/bin/nodejs</span><br></pre></td></tr></table></figure>
+<p>  到这里Node.js就安装完了，如果要试着玩一下的话可以先装个<a href="https://github.com/expressjs/express" target="_blank" rel="noopener">Express</a>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g express-generator</span><br></pre></td></tr></table></figure>
+<p>  然后到你想要的目录里运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express web(←这个名字是自己取的)</span><br></pre></td></tr></table></figure>
+<p>  然后就创建了一个 web 目录，进去这个目录里，然后执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> web</span><br><span class="line">   npm install</span><br></pre></td></tr></table></figure>
+<p>  把做好的网页改名为 index.html （不改也行，改了方便一点），放到 web/public/ 里面，然后运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<figure class="image-box">
+                <img src="deemo9.jpg" alt="" title="" class="">
+                <p></p>
+            </figure>
+<p>  然后就会提示网站在端口 3000 运行（没改过的话是3000）,要改端口的话是在 web/bin/www 文件里。用 ifconfig 得到IP后，在内网输入 IP:端口 就可以了。<br><br>
+  Node.js要学的话东西还有很多，这里只是介绍一下。</p>
+<h2 id="9个性化bash"><a class="markdownIt-Anchor" href="#9个性化bash"></a> ⑨个性化bash</h2>
+<p>  刚安装Termux时，bash的提示符就只有一个&quot;$&quot;，怎么看这个也太简单了，如果知道如何<a href="http://www.cnblogs.com/killkill/archive/2010/06/01/1749012.html" target="_blank" rel="noopener">定制个性化的bash</a>的话，肯定不会满足这样的提示符。下面介绍一下个性化Termux的bash的方法：<br></p>
+<figure class="image-box">
+                <img src="deemo003.jpg" alt="" title="" class="">
+                <p></p>
+            </figure>
+<p>  一个方法是<a href="http://www.cnblogs.com/killkill/archive/2010/06/01/1749012.html" target="_blank" rel="noopener">上面那篇文章</a>说的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PS1=<span class="string">"这里填你想要的提示符"</span></span><br></pre></td></tr></table></figure>
+<p>  这里的原理其实就是修改<a href="http://blog.51cto.com/xiaozhuang/844781" target="_blank" rel="noopener">环境变量PS1</a>，PS1就是主提示符变量。但是我用这个方法的时候，在重启Termux后提示符就会恢复为&quot;$&quot;，所以就有了方法二（修改<a href="https://zhidao.baidu.com/question/129164766.html" target="_blank" rel="noopener">bashrc</a>）：<br><br>
+  在Termux中，bashrc是在 /data/data/com.termux/files/usr/etc/<br>
+或者 ~/…/usr/etc/ 里面，叫做 bash.bashrc 。要修改提示符变量的话只须在 bash.bashrc 里面添加：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS1=<span class="string">'这里填你想要的提示符'</span></span><br></pre></td></tr></table></figure>
+<p>  修改完以后要重启一下bash。比如说我的提示符就是：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS1=<span class="string">'\[\033[01;31m\]☂  \[\033[02;00m\]\t\[\033[01;34m\] \w\n\[\033[01;32m\]\u@Android\[\033[00m\] \[\033[02;00m\]\$'</span></span><br></pre></td></tr></table></figure>
+<p><img src="deemo10.jpg" alt=""><br>
+  另外，如果是用vim修改显示不了unicode字符的话，可以在 ~/.vimrc 里面添加：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> encoding=utf-8</span><br></pre></td></tr></table></figure>
+<h2 id="10sudo须root"><a class="markdownIt-Anchor" href="#10sudo须root"></a> ⑩sudo(须root)</h2>
+<p>  在真正的Linux系统中，要切换为超级用户只需要输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su</span><br></pre></td></tr></table></figure>
+<p>  在Termux中使用 su 的话，虽然可以切换为超级用户，但是有很多Termux的命令都用不了（像普通的终端模拟器一样），这样在用需要root的操作时就极不方便。<br>
+  对此，Termux提供的方法是使用<a href="https://github.com/cswl/tsu" target="_blank" rel="noopener">tsu</a>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install tsu</span><br></pre></td></tr></table></figure>
+<p>  另一种获得权限的方法是 <a href="https://zh.wikipedia.org/wiki/Sudo" target="_blank" rel="noopener">sudo</a> ，这种方法的优点是不用切换为超级用户就可以获得权限。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo 需要权限才能执行的命令</span><br></pre></td></tr></table></figure>
+<p>  在Termux是没有sudo命令的，但是可以自己添加（前提是可以使用su）。具体参考<a href="https://github.com/st42/termux-sudo" target="_blank" rel="noopener">st42的github</a>。<br>
+  首先安装 ncurses-utils ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install ncurses-utils</span><br></pre></td></tr></table></figure>
+<p>  下载<a href="https://github.com/st42/termux-sudo" target="_blank" rel="noopener">github</a>上的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/st42/termux-sudo.git</span><br></pre></td></tr></table></figure>
+<p>  进入目录后，执行以下命令把 sudo 放到 bin 目录下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat sudo &gt; /data/data/com.termux/files/usr/bin/sudo</span><br></pre></td></tr></table></figure>
+<p>  然后给予 sudo 读写权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 700 /data/data/com.termux/files/usr/bin/sudo</span><br></pre></td></tr></table></figure>
+<p>  到这里sudo就安装好了。su、tsu和sudo在Termux中各有自己的优点和缺点。我推荐的话是三个对比着用，哪个适当的话就用哪个。</p>
+<figure class="image-box">
+                <img src="deemo12.jpg" alt="sudo的用法" title="" class="">
+                <p>sudo的用法</p>
+            </figure>
+<figure class="image-box">
+                <img src="deemo13.jpg" alt="tsu，退出时输入exit" title="" class="">
+                <p>tsu，退出时输入exit</p>
+            </figure>
+<figure class="image-box">
+                <img src="deemo14.jpg" alt="su，可以看到bash的提示符都变了" title="" class="">
+                <p>su，可以看到bash的提示符都变了</p>
+            </figure>
+<h2 id="11其他"><a class="markdownIt-Anchor" href="#11其他"></a> ⑪其他</h2>
+<p>  还没想到，我想到再写吧~</p>
+<h1 id="补充"><a class="markdownIt-Anchor" href="#补充"></a> 补充</h1>
+<p>  可能是因为安卓手机休眠后会关闭后台进程（省电），有时熄屏后会出现ssh连不上或者nodejs的网页打不开的情况，有时还会vim等了很久都还没打开，最终要按亮屏幕才能打开。这样每次都要按亮屏幕的话就会很不方便，所以就有了以下这个还算好的解决办法（须root）：<br><br>
+  首先让手机不休眠，这个的话通常在手机的设置里就有（如果没有不休眠的这个选项的话就选时间最长的那个，比如我的CyanogenMod最长只能选 无操作30分钟后休眠 ）。<br><br>
+  因为手机耗电的主要是屏幕，接下来把屏幕亮度调到最低。调节安卓手机屏幕亮度的话可以修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sys/class/leds/lcd-backlight/brightness</span><br></pre></td></tr></table></figure>
+<p>  这个文件，这个文件里面写的是一个范围在0到一个储存在同目录下叫 max_brightness 的文件里的数字，我们要最暗的话只须写入0。首先要给这个文件读写权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 666 /sys/class/leds/lcd-backlight/brightness</span><br></pre></td></tr></table></figure>
+<p>  然后写入0:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 0 &gt; /sys/class/leds/lcd-backlight/brightness</span><br></pre></td></tr></table></figure>
+<p>  如无意外的话会看见手机像熄屏了一样，但是这只是设置成没有亮度，其他的还是跟亮屏时一样。<br><br>
+  注意这样的话会比平时更耗电，请考虑过后才操作。<br><br>
+  最后把它写脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#比如说我的文件名叫做 brightness.sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#检测有没有读写权限，没有的话就给予读写权限</span></span><br><span class="line"><span class="keyword">if</span> [ ! -w /sys/class/leds/lcd-backlight/brightness -o ! -r  /sys/class/leds/lcd-backlight/brightness ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">	sudo chmod 666 /sys/class/leds/lcd-backlight/brightness </span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#判断是否在范围内</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$1</span> -ge 0 -o <span class="variable">$1</span> -le 255 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">	<span class="comment">#把亮度写进brightness文件</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="variable">$1</span> &gt; /sys/class/leds/lcd-backlight/brightness </span><br><span class="line">	<span class="built_in">echo</span> Setted brightness to <span class="variable">$1</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="built_in">echo</span> Error!</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment">#最后看看亮度有没有改变</span></span><br><span class="line"><span class="built_in">echo</span> Now brightness is:</span><br><span class="line">cat /sys/class/leds/lcd-backlight/brightness</span><br></pre></td></tr></table></figure>
+<p>  使用的时候是（在文件所在路径）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh ./brightness 一个亮度的数字(比如0)</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h1>
+<p>  一番折腾后，手机已经比较像个服务器了，为什么一部安卓手机可以弄成一个像Linux的服务器？因为安卓的内核就是Linux！参考<a href="http://www.techug.com/post/linux-and-android.html" target="_blank" rel="noopener">☛这个</a>。</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 安卓Android </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[c++矩阵类-初阶[0]]]></title>
       <url>/2018/01/31/c-%E7%9F%A9%E9%98%B5%E7%B1%BB-%E5%88%9D%E9%98%B6-0/</url>
       <content type="html"><![CDATA[<p>构造函数怎么写好?</p>
