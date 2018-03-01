@@ -3,6 +3,46 @@
   
     
     <entry>
+      <title><![CDATA[系统降级后的0x000000A5错误]]></title>
+      <url>/2018/03/01/%E7%B3%BB%E7%BB%9F%E9%99%8D%E7%BA%A7%E5%90%8E%E7%9A%840x000000A5%E9%94%99%E8%AF%AF/</url>
+      <content type="html"><![CDATA[<p>  Windows重装后蓝屏提示0x000000A5？</p>
+<a id="more"></a>
+<h1 id="症状"><a class="markdownIt-Anchor" href="#症状"></a> 症状</h1>
+<p>  机主的电脑本来是win8的，因为某种原因重装了个win7系统，在重装完成后的第一次重启（据说是激活的重启，但我觉得跟激活无关）后就出现蓝屏，提示0x000000A5，重启也无效。</p>
+<figure class="image-box">
+                <img src="deemo1.JPG" alt="图是我网上找的- -，内容一样" title="" class="">
+                <p>图是我网上找的- -，内容一样</p>
+            </figure>
+<h1 id="诊断"><a class="markdownIt-Anchor" href="#诊断"></a> 诊断</h1>
+<p>  在我打算重装win7的时候，发现重装不了：</p>
+<figure class="image-box">
+                <img src="deemo2.jpeg" alt="" title="" class="">
+                <p></p>
+            </figure>
+<p>  所以怀疑是电脑不兼容win7.</p>
+<h1 id="修复"><a class="markdownIt-Anchor" href="#修复"></a> 修复</h1>
+<p>  安装win10的时候没有上面的问题，在重装到win10后就没有出现蓝屏了，问题解决。<br><br>
+  另外，在蓝屏中也提到BIOS的问题，所以我觉得有可能是BIOS与win7不兼容，实在要装win7的话可以尝试把BIOS降一下级。（或者升一下级吧- -具体的我没试过）</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Repairing修电脑相关 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 修电脑 </tag>
+            
+            <tag> Winsows </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[限制EasyUI窗口的移动区域]]></title>
       <url>/2018/02/10/%E9%99%90%E5%88%B6easyui%E7%AA%97%E5%8F%A3%E7%9A%84%E7%A7%BB%E5%8A%A8%E5%8C%BA%E5%9F%9F/</url>
       <content type="html"><![CDATA[<p>  前段时间使用EasyUI的Window插件时发现生成的窗口移动范围是整个页面，不能限制在一个区域，折腾了许久才找到解决方法。<br>
@@ -295,9 +335,9 @@
         
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> Android </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
         
@@ -383,9 +423,9 @@
       
         <categories>
             
-            <category> C\C++编程相关 </category>
-            
             <category> Math数学相关 </category>
+            
+            <category> C\C++编程相关 </category>
             
         </categories>
         
@@ -411,9 +451,9 @@
       
         <categories>
             
-            <category> C\C++编程相关 </category>
-            
             <category> Math数学相关 </category>
+            
+            <category> C\C++编程相关 </category>
             
         </categories>
         
