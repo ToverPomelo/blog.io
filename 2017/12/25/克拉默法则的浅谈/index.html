@@ -11,13 +11,15 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.2.6">
     
+        <link rel="stylesheet" href="/css/third-party/gitment.css?v=1.2.6">
+    
     <script type="text/javascript">
         // Data Center
         var DC = {
             reward:	true,
             lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
             v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"give me some sugers plz...","avatar":"wavatar"}'),
-            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}')
+            g: JSON.parse('{"enable":true,"lazy":true,"owner":"664514882@qq.com","repo":"gitment","oauth":{"client_id":"3d5cbbc3baa089167063","client_secret":"cb179017b6ff87215e0c6e02a31d611ebd6a8629"},"perPage":10}')
         };
     </script>
     <script type="text/javascript">
@@ -215,6 +217,16 @@
             
 
 
+<span class="post-comments-counter" id="/2017/12/25/克拉默法则的浅谈/">
+    <span class="post-meta-item-icon">
+        <i class="icon icon-comment-o"></i>
+    </span>
+    
+    <a href="/2017/12/25/克拉默法则的浅谈/#gitment-display-button">
+        <span class="post-comments-count gitment-comments-count" itemprop="commentsCount"></span>
+    </a>
+</span>
+
             
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
@@ -252,7 +264,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-03-05T05:50:56.594Z" itemprop="dateUpdated">2018-03-05 13:50:56</time>
+    Last updated: <time datetime="2018-03-05T05:50:56.594Z" itemprop="dateUpdated">2018-03-05 13:50:56</time>
 </span><br>
 
 
@@ -316,6 +328,14 @@
         </div>
         
             
+
+
+      
+    <div onclick="ShowGitment()" id="gitment-display-button" style="display: block;">
+        <span>显示 Gitment 评论</span>
+    </div>
+    <div id="gitment" style="display: none;"></div>
+
 
 
         
@@ -486,6 +506,9 @@
 
 
     
+    
+        <script type="text/javascript" src="/js/plugins/gitmint.browser.js?v=1.2.6"></script>
+<script type="text/javascript" src="/js/plugins/gitment.js?v=1.2.6"></script>
     
 
 
